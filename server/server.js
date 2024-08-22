@@ -1,7 +1,8 @@
 const http = require('http');
 const PORT = 3000;
 const url = require('url');
-const fs = require('fs')
+const fs = require('fs');
+const querystring = require('querystring')
 
 const server = http.createServer((req,res) =>{
 
@@ -26,6 +27,27 @@ else if(parsed_url.pathname === '/style.css'){
 else if (parsed_url.pathname === '/json'){
     res.writeHead(200,{'Content-Type' : 'text/json'})
     res.end(fs.readFileSync('../client/datas.json'))
+}
+else if(parsed_url.pathname === '/submit' && req.method === 'POST'){
+    console.log("reached here");
+
+    let body = '';
+
+    req.on('data',(chunks)=> {
+        console.log("chunks :", chunks);
+        body += chunks.toString();
+    });
+
+    req.on('end',() => {
+        console.log("body :",body);
+        let datas =querystring.parse(body);
+        console.log("datas :",datas)
+
+        console.log("datas :",datas.name)
+        console.log("datas :",datas.email)
+        console.log("datas :",datas.password)
+
+    });
 }
 
 })
