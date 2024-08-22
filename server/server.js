@@ -16,12 +16,16 @@ console.log("parsed_url :", parsed_url);
 if(parsed_url.pathname === '/'){
     //serve the html file on root request
 
-    res.writeHead(200,{'content-type' : 'text/html'});
+    res.writeHead(200,{'Content-Type' : 'text/html'});
     res.end(fs.readFileSync('../client/index.html'));
 }
 else if(parsed_url.pathname === '/style.css'){
-    res.writeHead(200,{'content-type' : 'text/css'});
-    res.end(fs.readFileSync('../client/css.html'));
+    res.writeHead(200,{'Content-Type' : 'text/css'});
+    res.end(fs.readFileSync('../client/style.css'));
+}
+else if (parsed_url.pathname === '/json'){
+    res.writeHead(200,{'Content-Type' : 'text/json'})
+    res.end(fs.readFileSync('../client/datas.json'))
 }
 
 })
