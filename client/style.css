@@ -1,4 +1,6 @@
 body{
-    background-color: black;
-    color: white;
+    background-color: rgb(224, 144, 144);
+    font-size: 25px;
+    text-align: center;
+    margin-top: 20%;
 }

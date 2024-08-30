@@ -39,6 +39,14 @@ else if(parsed_url.pathname === '/style.css'){
     res.writeHead(200,{'Content-Type' : 'text/css'});
     res.end(fs.readFileSync('../client/style.css'));
 }
+else if(parsed_url.pathname === '/addUser.html'){
+    res.writeHead(200,{'Content-Type' : 'text/html'});
+    res.end(fs.readFileSync('../client/addUser.html'));
+}
+else if(parsed_url.pathname === '/script.js'){
+    res.writeHead(200,{'Content-Type' : 'text/javascript'});
+    res.end(fs.readFileSync('../client/script.js'));
+}
 else if (parsed_url.pathname === '/json'){
     res.writeHead(200,{'Content-Type' : 'text/json'})
     res.end(fs.readFileSync('../client/datas.json'))
