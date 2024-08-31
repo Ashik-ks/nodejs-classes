@@ -67,12 +67,33 @@ else if(parsed_url.pathname === '/submit' && req.method === 'POST'){
         let collection = db.collection("users")
 
         console.log("body :",body);
-        let datas =querystring.parse(body);
-        console.log("datas :",datas)
+        // let datas =querystring.parse(body);
+        // console.log("datas :",datas)
+
+        let datas = JSON.parse(body);
+        console.log("datas : ",datas);
+         let name = datas.name;
+         let email = datas.email;
+         let password = datas.password;
 
         console.log("datas :",datas.name)
         console.log("datas :",datas.email)
         console.log("datas :",datas.password)
+        if(!name){
+            res.writeHead(400,{'Content-Type' : 'text/plain'});
+            res.end("invalid name");
+            return;
+        }
+        if(!email){
+            res.writeHead(400,{'Content-Type' : 'text/plain'});
+            res.end("invalid email");
+            return;
+        }
+        if(!password){
+            res.writeHead(400,{'Content-Type' : 'text/plain'});
+            res.end("invalid password");
+            return;
+        }
 
         collection.insertOne({
             name : datas.name,

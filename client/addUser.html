@@ -7,10 +7,21 @@
 </head>
 <body>
     <form onsubmit="addUser(event)">
+        <div> 
+            <input type="textkbox" name="name" id="name" placeholder="enter your name">
+            <div id="name-error"></div>
+        </div>
+       
+        <div> 
+            <input type="textbox" name="email" id="email" placeholder="enter your email">
+            <div id="email-error"></div>
+        </div>
 
-        <input type="textkbox" name="name" id="checkbox" placeholder="enter your name">
-        <input type="textbox" name="email" id="checkbox1" placeholder="enter your email">
-        <input type="password" name="password" id="checkbox2" placeholder="enter your password">
+        <div> 
+            <input type="password" name="password" id="password" placeholder="enter your password">
+            <div id="password-error"></div>
+        </div>
+        
           <input type="submit">
       </form>
     <script src="script.js"></script>
